@@ -35,31 +35,21 @@ curl -o scripts/create_docx.py "https://raw.githubusercontent.com/yhirpara04-cmy
 ```
 If the download fails, tell the user and stop. They may need to check internet access or run `pip install python-docx`.
 
-### Step 3 — Create `resume/master-resume.md`
-ATS-safe template with these sections in order: contact line, Summary, Skills
-(Technical / Domain / Soft Skills), Experience (2 example slots), Education,
-Certifications, Projects.
+### Step 3 — Pull templates from GitHub
 
-Include at the top:
-> This is your source-of-truth resume. Include everything — Claude selects what's
-> relevant per application. Never tailor this file manually.
-
-Each section: one HTML comment explaining what belongs there, placeholder brackets
-`[like this]` for every field, example bullet formula:
-`[Action verb] + [what] + [how/tool] + [quantified result]`
-
-Format rules in a comment: no tables, no columns, dates "Month YYYY" throughout,
-standard section headers only.
-
-### Step 4 — Create `jobs/job-description.md`
-Placeholder file with instructions to delete the placeholder line and paste the
-full job posting (title, company, all requirements, responsibilities, preferred skills).
-One placeholder line: `[PASTE FULL JOB DESCRIPTION HERE]`
-
-### Step 5 — Create `log/applications.md`
-Header row: `Date Applied | Company | Role | Output File | Status | Notes`
-One empty example row.
-Status legend: Applied, Phone Screen, Interview, Offer, Rejected, Ghosted, Withdrawn
+**Windows (PowerShell):**
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yhirpara04-cmyk/resume-ai/main/templates/master-resume.md" -OutFile "resume/master-resume.md"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yhirpara04-cmyk/resume-ai/main/templates/job-description.md" -OutFile "jobs/job-description.md"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yhirpara04-cmyk/resume-ai/main/templates/applications.md" -OutFile "log/applications.md"
+```
+**Mac / Linux:**
+```bash
+curl -o resume/master-resume.md "https://raw.githubusercontent.com/yhirpara04-cmyk/resume-ai/main/templates/master-resume.md"
+curl -o jobs/job-description.md "https://raw.githubusercontent.com/yhirpara04-cmyk/resume-ai/main/templates/job-description.md"
+curl -o log/applications.md "https://raw.githubusercontent.com/yhirpara04-cmyk/resume-ai/main/templates/applications.md"
+```
+If any download fails, tell the user and stop.
 
 ### Step 6 — Confirm
 Say exactly:
@@ -206,14 +196,16 @@ Only these exact headers: Summary · Skills · Experience · Education · Certif
 **Rule 8 — Date Format**
 "Month YYYY" throughout. No exceptions.
 
-**Rule 9 — Aggressive Tailoring**
+**Rule 9 — Aggressive Tailoring (Target: ≥ 80% AFTER score)**
 Push keyword inclusion as far as the resume defensibly supports:
 - If existing experience implies a skill, use the JD's exact language to describe it.
 - If a concept is adjacent and a reasonable professional would agree it applies, include it.
 - Reframe existing bullets liberally using JD vocabulary — same work, JD's words.
+- Surface every achievement, metric, and relevant project from master-resume.md — leave nothing useful on the table.
 - Do NOT fabricate metrics, credentials, job titles, or companies.
 - Do NOT claim specific tools entirely absent from the master resume.
 - Missing required skills that cannot be inferred → flag under GAPS only.
+- If projected AFTER score is below 80%, do another pass — find more keywords to mirror, more bullets to reframe, more skills to surface before writing the output.
 
 ---
 
@@ -316,7 +308,7 @@ Required sections: Summary, Skills, Experience, Education, Certifications, Proje
 - ATS cannot parse: tables, columns, text boxes, graphics, headers/footers, designed PDFs
 - Safe export: Word → Save as PDF  |  Google Docs → Download → PDF
 - Keyword stuffing (keywords in isolation) is detected and penalized — use in context
-- Under 10 years experience = 1 page max; 10+ years = 2 pages acceptable
+- Under 5 years experience = 1 page max; 5+ years = 2 pages acceptable
 - Inconsistent date formats confuse parsers — "Month YYYY" everywhere
 
 ---
@@ -326,3 +318,4 @@ Required sections: Summary, Skills, Experience, Education, Certifications, Proje
 |------------|--------|
 | 2026-06-11 | Initial version |
 | 2026-06-13 | Auto .docx generation; 6-category ATS scoring; aggressive tailoring; scores-only report |
+| 2026-06-13 | initialize now pulls all templates from GitHub; 80%+ AFTER score target added |
