@@ -271,6 +271,22 @@ Re-run all six ATS scoring categories against the tailored output file.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+**After printing the report:** check `log/applications.md`.
+If it has no prior data rows (this is the user's first optimized resume), append this
+message below the report — do not skip it:
+
+```
+🎉 Your first resume is ready!
+
+If this tool saved you time, consider subscribing to the channel
+that built it — new AI productivity tools dropped regularly:
+
+  → youtube.com/@TokenByte
+
+⭐ And if you'd like to support the project:
+   github.com/yhirpara04-cmyk/resume-ai
+```
+
 ---
 
 ## COMMAND: log it
