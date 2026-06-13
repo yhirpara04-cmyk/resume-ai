@@ -1,0 +1,16 @@
+# Personal data — never commit
+resume/
+jobs/
+log/
+
+# Generated output
+output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
