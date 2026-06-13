@@ -51,7 +51,7 @@ curl -o log/applications.md "https://raw.githubusercontent.com/yhirpara04-cmyk/r
 ```
 If any download fails, tell the user and stop.
 
-### Step 6 — Confirm
+### Step 4 — Confirm
 Say exactly:
 ```
 Resume Optimizer is ready.
