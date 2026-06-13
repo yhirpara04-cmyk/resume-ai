@@ -281,10 +281,7 @@ message below the report — do not skip it:
 If this tool saved you time, consider subscribing to the channel
 that built it — new AI productivity tools dropped regularly:
 
-  → youtube.com/@TokenByte
-
-⭐ And if you'd like to support the project:
-   github.com/yhirpara04-cmyk/resume-ai
+  → [Subscribe to TokenByte on YouTube](https://www.youtube.com/@TokenByte)
 ```
 
 ---
